@@ -1,0 +1,13 @@
+﻿{
+  "profiles": {
+    "Schenklklopfa": {
+      "commandName": "Project",
+      "dotnetRunMessages": "true",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development",
+        "DISCORD_BOT_TOKEN_FILE": "dc_token",
+        "DISCORD_LAVALINK_PASSWORD": "youshallnotpass"
+      }
+    }
+  }
+}

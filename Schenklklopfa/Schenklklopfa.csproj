@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <UserSecretsId>dotnet-Schenklklopfa-2C9E5CC6-DF05-4710-A519-3FFA275A2FE3</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="DSharpPlus" Version="4.1.0" />
+        <PackageReference Include="DSharpPlus.CommandsNext" Version="4.1.0" />
+        <PackageReference Include="DSharpPlus.Interactivity" Version="4.1.0" />
+        <PackageReference Include="DSharpPlus.Lavalink" Version="4.1.0" />
+        <PackageReference Include="DSharpPlus.VoiceNext" Version="4.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    </ItemGroup>
+</Project>
