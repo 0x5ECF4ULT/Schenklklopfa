@@ -172,8 +172,8 @@ namespace Schenklklopfa
                 return;
             }
 
-            var llGuildConnection = ctx.Client.GetLavalink().ConnectedNodes.Values.First();
-            await llGuildConnection.StopAsync();
+            var llChannelConnection = ctx.Client.GetLavalink().ConnectedNodes.Values.First().GetGuildConnection(ctx.Guild);
+            await llChannelConnection.DisconnectAsync();
             await ctx.RespondAsync($"Left the voice channel.");
         }
 
