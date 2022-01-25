@@ -166,6 +166,12 @@ namespace Schenklklopfa
         [Command("leave")]
         public async Task Leave(CommandContext ctx)
         {
+            if (!EnsureLavalinkIsConnected(ctx)) //check if Lavalink is connected
+            {
+                await ctx.RespondAsync("Sorry! I had an internal error.");
+                return;
+            }
+            
             if (!EnsureMemberIsInAVoiceChannel(ctx, ctx.Guild.CurrentMember)) //check if the bot is in a voice channel
             {
                 await ctx.RespondAsync("I'm not in any voice channel!");
