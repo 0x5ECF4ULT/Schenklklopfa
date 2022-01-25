@@ -43,7 +43,7 @@ namespace Schenklklopfa
                     GetVoiceChannelAMemberIsIn(ctx,
                         ctx.Guild.CurrentMember)) //is it the same as the calling member is in?
                 {
-                    await ctx.RespondAsync("I'm already in a voice channel. Ask nicely to release me :)");
+                    await ctx.RespondAsync($"I'm already in a voice channel. Try `{ctx.Prefix}leave` :)");
                     return;
                 }
 
@@ -180,7 +180,7 @@ namespace Schenklklopfa
 
             var llChannelConnection = ctx.Client.GetLavalink().ConnectedNodes.Values.First().GetGuildConnection(ctx.Guild);
             await llChannelConnection.DisconnectAsync();
-            await ctx.RespondAsync($"Left the voice channel.");
+            await ctx.RespondAsync("Left the voice channel.");
         }
 
         private async Task OnPlaybackFinishedHandler(LavalinkGuildConnection sender, TrackFinishEventArgs e)
