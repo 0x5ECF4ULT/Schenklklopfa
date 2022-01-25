@@ -44,14 +44,15 @@ namespace Schenklklopfa
             _logger.LogInformation("Such commands...");
             var cmdNext = discord.UseCommandsNext(new CommandsNextConfiguration
             {
-                StringPrefixes = new[] { Environment.GetEnvironmentVariable("DISCORD_BOT_PREFIX") ?? "!" }
+                StringPrefixes = new[] {Environment.GetEnvironmentVariable("DISCORD_BOT_PREFIX") ?? "!"}
             });
             cmdNext.RegisterCommands<Commands>();
 
             _logger.LogInformation("Many music connection");
             var llEndpoint = new ConnectionEndpoint
             {
-                Hostname = "127.0.0.1",
+                Hostname = Environment.GetEnvironmentVariable("DISCORD_LAVALINK_HOST") ??
+                           throw new ArgumentException("Where Lavalink?"),
                 Port = 2333
             };
             var llConfig = new LavalinkConfiguration
