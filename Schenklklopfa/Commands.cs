@@ -71,7 +71,7 @@ namespace Schenklklopfa
             else
                 llGuildConnection = Task.FromResult(llNodeConnection.GetGuildConnection(ctx.Guild));
 
-            llNodeConnection.PlaybackFinished += OnPlaybackFinishedHandler; //TODO: checks. gets added on every !p
+            //llNodeConnection.PlaybackFinished += OnPlaybackFinishedHandler; //TODO: checks. gets added on every !p
 
             await res;
             if (res.Result.LoadResultType is LavalinkLoadResultType.LoadFailed or LavalinkLoadResultType.NoMatches)
@@ -161,6 +161,20 @@ namespace Schenklklopfa
 
             await llChannelConnection.ResumeAsync();
             await ctx.RespondAsync("Resumed.");
+        }
+
+        [Command("leave")]
+        public async Task Leave(CommandContext ctx)
+        {
+            if (!EnsureMemberIsInAVoiceChannel(ctx, ctx.Guild.CurrentMember)) //check if the bot is in a voice channel
+            {
+                await ctx.RespondAsync("I'm not in any voice channel!");
+                return;
+            }
+
+            var llGuildConnection = ctx.Client.GetLavalink().ConnectedNodes.Values.First();
+            await llGuildConnection.StopAsync();
+            await ctx.RespondAsync($"Left the voice channel.");
         }
 
         private async Task OnPlaybackFinishedHandler(LavalinkGuildConnection sender, TrackFinishEventArgs e)
