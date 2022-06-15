@@ -194,7 +194,8 @@ namespace Schenklklopfa
         [Command("h"), Aliases("help")]
         public async Task Help(CommandContext ctx)
         {
-            await ctx.RespondAsync("Commands: ping, play, pause/stop, resume, leave, help");
+            await ctx.RespondAsync("Commands:\n" +
+                                   "```- ping\n- play\n- stop\n- resume\n- leave\n- help```");
         }
     }
 }
