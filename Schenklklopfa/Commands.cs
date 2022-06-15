@@ -85,7 +85,7 @@ namespace Schenklklopfa
             await (await llGuildConnection).PlayAsync(track);
         }
 
-        [Command("pause")]
+        [Command("pause"), Aliases("stop")]
         public async Task Pause(CommandContext ctx)
         {
             if (!EnsureLavalinkIsConnected(ctx)) //check if Lavalink is connected
@@ -189,6 +189,12 @@ namespace Schenklklopfa
                 await Task.Delay(1000 * 60 * 5, _cts.Token).ContinueWith(_ =>
                     sender.Guild.GetDefaultChannel()
                         .SendMessageAsync($"I have removed myself from {sender.Channel} due to inactivity."));
+        }
+        
+        [Command("h"), Aliases("help")]
+        public async Task Help(CommandContext ctx)
+        {
+            await ctx.RespondAsync("Commands: ping, play, pause/stop, resume, leave, help");
         }
     }
 }
