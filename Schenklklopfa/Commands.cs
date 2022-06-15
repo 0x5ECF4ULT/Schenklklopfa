@@ -191,10 +191,10 @@ namespace Schenklklopfa
                         .SendMessageAsync($"I have removed myself from {sender.Channel} due to inactivity."));
         }
         
-        [Command("h"), Aliases("help")]
+        /*[Command("h"), Aliases("help")]
         public async Task Help(CommandContext ctx)
         {
             await ctx.RespondAsync("Commands: ping, play, pause/stop, resume, leave, help");
-        }
+        }*/
     }
 }
