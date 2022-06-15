@@ -85,7 +85,7 @@ namespace Schenklklopfa
             await (await llGuildConnection).PlayAsync(track);
         }
 
-        [Command("pause"), Aliases("stop")]
+        [Command("s"), Aliases("stop", "pause")]
         public async Task Pause(CommandContext ctx)
         {
             if (!EnsureLavalinkIsConnected(ctx)) //check if Lavalink is connected
@@ -124,7 +124,7 @@ namespace Schenklklopfa
             await ctx.RespondAsync("Paused.");
         }
 
-        [Command("resume")]
+        [Command("r"), Aliases("resume")]
         public async Task Resume(CommandContext ctx)
         {
             if (!EnsureLavalinkIsConnected(ctx)) //check if Lavalink is connected
@@ -163,7 +163,7 @@ namespace Schenklklopfa
             await ctx.RespondAsync("Resumed.");
         }
 
-        [Command("leave")]
+        [Command("l"), Aliases("leave")]
         public async Task Leave(CommandContext ctx)
         {
             if (!EnsureLavalinkIsConnected(ctx)) //check if Lavalink is connected
