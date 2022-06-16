@@ -16,13 +16,13 @@ namespace Schenklklopfa
     {
         private readonly CancellationTokenSource _cts = new();
 
-        [Command("ping")]
+        [Command("ping"), Description("Check if the bot is responding")]
         public async Task Ping(CommandContext ctx)
         {
             await ctx.RespondAsync("Bonk!");
         }
 
-        [Command("p"), Aliases("play")]
+        [Command("play"), Aliases("p"), Description("Choose what you wanna play")]
         public async Task Play(CommandContext ctx, [RemainingText] string urlOrSearchString)
         {
             if (!EnsureLavalinkIsConnected(ctx)) //check if Lavalink is connected
@@ -85,7 +85,7 @@ namespace Schenklklopfa
             await (await llGuildConnection).PlayAsync(track);
         }
 
-        [Command("pause"), Aliases("stop")]
+        [Command("pause"), Aliases("stop", "s"), Description("Pauses playback")]
         public async Task Pause(CommandContext ctx)
         {
             if (!EnsureLavalinkIsConnected(ctx)) //check if Lavalink is connected
@@ -124,7 +124,7 @@ namespace Schenklklopfa
             await ctx.RespondAsync("Paused.");
         }
 
-        [Command("resume")]
+        [Command("resume"), Aliases("r"), Description("Resumes playback")]
         public async Task Resume(CommandContext ctx)
         {
             if (!EnsureLavalinkIsConnected(ctx)) //check if Lavalink is connected
@@ -163,7 +163,7 @@ namespace Schenklklopfa
             await ctx.RespondAsync("Resumed.");
         }
 
-        [Command("leave")]
+        [Command("leave"), Aliases("l"), Description("Say goodbye to the bot")]
         public async Task Leave(CommandContext ctx)
         {
             if (!EnsureLavalinkIsConnected(ctx)) //check if Lavalink is connected
@@ -190,11 +190,5 @@ namespace Schenklklopfa
                     sender.Guild.GetDefaultChannel()
                         .SendMessageAsync($"I have removed myself from {sender.Channel} due to inactivity."));
         }
-        
-        /*[Command("h"), Aliases("help")]
-        public async Task Help(CommandContext ctx)
-        {
-            await ctx.RespondAsync("Commands: ping, play, pause/stop, resume, leave, help");
-        }*/
     }
 }
