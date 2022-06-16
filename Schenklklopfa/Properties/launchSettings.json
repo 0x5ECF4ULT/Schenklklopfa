@@ -6,6 +6,7 @@
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development",
         "DISCORD_BOT_TOKEN_FILE": "dc_token",
+        "DISCORD_LAVALINK_HOST": "127.0.0.1",
         "DISCORD_LAVALINK_PASSWORD": "youshallnotpass"
       }
     }
