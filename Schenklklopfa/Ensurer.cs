@@ -11,9 +11,11 @@ namespace Schenklklopfa
     {
         public static bool EnsureChannelIsAVoiceChannel(DiscordChannel channel) => channel.Type == ChannelType.Voice;
 
-        public static bool EnsureMemberIsInAVoiceChannel(CommandContext ctx, DiscordMember member) =>
-            ctx.Guild.Channels
-                .Any(pair => EnsureChannelIsAVoiceChannel(pair.Value) && pair.Value.Users.Contains(member));
+        public static bool EnsureCallingMemberIsInAVoiceChannel(CommandContext ctx) =>
+            ctx.Member?.VoiceState.Channel != null;
+
+        public static bool EnsureMemberIsInAVoiceChannel(DiscordMember member) =>
+            member?.VoiceState.Channel != null;
 
         public static bool EnsureLavalinkIsConnected(CommandContext ctx) =>
             ctx.Client.GetLavalink().ConnectedNodes.Any();

@@ -31,14 +31,13 @@ namespace Schenklklopfa
                 return;
             }
 
-            if (!EnsureMemberIsInAVoiceChannel(ctx, ctx.Member)) //check if the calling member is in a voice channel
+            if (!EnsureCallingMemberIsInAVoiceChannel(ctx)) //check if the calling member is in a voice channel
             {
                 await ctx.RespondAsync("You're not in a voice channel!");
                 return;
             }
 
-            if (EnsureMemberIsInAVoiceChannel(ctx,
-                ctx.Guild.CurrentMember)) //check if the bot is already in a voice channel
+            if (EnsureMemberIsInAVoiceChannel(ctx.Guild.CurrentMember)) //check if the bot is already in a voice channel
                 if (GetVoiceChannelAMemberIsIn(ctx, ctx.Member) !=
                     GetVoiceChannelAMemberIsIn(ctx,
                         ctx.Guild.CurrentMember)) //is it the same as the calling member is in?
@@ -62,7 +61,7 @@ namespace Schenklklopfa
                 : llNodeConnection.Rest.GetTracksAsync(urlOrSearchString);
 
             Task<LavalinkGuildConnection> llGuildConnection;
-            if (!EnsureMemberIsInAVoiceChannel(ctx, ctx.Guild.CurrentMember) ||
+            if (!EnsureMemberIsInAVoiceChannel(ctx.Guild.CurrentMember) ||
                 GetVoiceChannelAMemberIsIn(ctx, ctx.Member) !=
                 GetVoiceChannelAMemberIsIn(ctx,
                     ctx.Guild.CurrentMember)) //is the bot in the same channel as the calling member is in?
@@ -94,13 +93,13 @@ namespace Schenklklopfa
                 return;
             }
 
-            if (!EnsureMemberIsInAVoiceChannel(ctx, ctx.Member)) //check if the calling member is in a voice channel
+            if (!EnsureCallingMemberIsInAVoiceChannel(ctx)) //check if the calling member is in a voice channel
             {
                 await ctx.RespondAsync("You're not in a voice channel!");
                 return;
             }
 
-            if (!EnsureMemberIsInAVoiceChannel(ctx, ctx.Guild.CurrentMember)) //check if the bot is in a voice channel
+            if (!EnsureMemberIsInAVoiceChannel(ctx.Guild.CurrentMember)) //check if the bot is in a voice channel
             {
                 await ctx.RespondAsync("I'm not in any voice channel!");
                 return;
@@ -133,13 +132,13 @@ namespace Schenklklopfa
                 return;
             }
 
-            if (!EnsureMemberIsInAVoiceChannel(ctx, ctx.Member)) //check if the calling member is in a voice channel
+            if (!EnsureCallingMemberIsInAVoiceChannel(ctx)) //check if the calling member is in a voice channel
             {
                 await ctx.RespondAsync("You're not in a voice channel!");
                 return;
             }
 
-            if (!EnsureMemberIsInAVoiceChannel(ctx, ctx.Guild.CurrentMember)) //check if the bot is in a voice channel
+            if (!EnsureMemberIsInAVoiceChannel(ctx.Guild.CurrentMember)) //check if the bot is in a voice channel
             {
                 await ctx.RespondAsync("I'm not in any voice channel!");
                 return;
@@ -172,7 +171,7 @@ namespace Schenklklopfa
                 return;
             }
             
-            if (!EnsureMemberIsInAVoiceChannel(ctx, ctx.Guild.CurrentMember)) //check if the bot is in a voice channel
+            if (!EnsureMemberIsInAVoiceChannel(ctx.Guild.CurrentMember)) //check if the bot is in a voice channel
             {
                 await ctx.RespondAsync("I'm not in any voice channel!");
                 return;
